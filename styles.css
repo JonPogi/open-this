@@ -1,0 +1,188 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('bday_bg.jpg');
+    background-position: center; /* Center the background image */
+    
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+
+}
+
+.card {
+    position: relative;
+    max-width: 400px; /* Set a maximum width for the card */
+    width: 90%; /* Allow the card to be responsive */
+    height: auto;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 20px;
+    padding: 20px; /* Adjust padding for better spacing */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ff4081;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Prevent overflow of hearts */
+    
+}
+
+.card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.heart {
+    position: absolute;
+    color: #ff4081;
+    font-size: 30px;
+    animation: float 4s infinite;
+}
+
+h1 {
+    font-size: 2em; /* Adjusted font size for better fit */
+    font-weight: bold;
+    color: #ff4081;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add text shadow */
+}
+
+.message {
+    font-size: 18px; /* Adjusted font size for better fit */
+    line-height: 1.5; /* Adjust line height for readability */
+    color: #333;
+    background: rgba(255, 255, 255, 0.8); /* Light background for readability */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px; /* Add margin to separate from button */
+    transition: transform 0.3s; /* Add transition for scaling */
+}
+
+.message:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+.photos {
+    display: flex;
+    justify-content: space-between; /* Space out the photos */
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+.photo {
+    width: 30%; /* Set width for each photo */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transition for hover effect */
+    opacity: 0; /* Start with opacity 0 for fade-in effect */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+button {
+    padding: 10px 30px;
+    background: linear-gradient(90deg, #ff4081, #ff5a5a);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #ff5a5a, #ff4081);
+    transform: scale(1.1);
+}
+
+.hidden-message {
+    display: none; /* Ensure it is hidden initially */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px; /* Increased font size for the hidden message */
+    color: #ff4081;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9); /* Light background for visibility */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+.hidden-message.show {
+    display: block; /* Show when the class is added */
+    opacity: 1;
+}
+
+/* Confetti effect */
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff4081;
+    opacity: 0.8;
+    animation: fall 3s infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+}
+
+/* Randomize confetti pieces */
+.confetti-piece:nth-child(1) { left: 10%; animation-delay: 0s; }
+.confetti-piece:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+.confetti-piece:nth-child(3) { left: 30%; animation-delay: 1s; }
+.confetti-piece:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+.confetti-piece:nth-child(5) { left: 50%; animation-delay: 2s; }
+.confetti-piece:nth-child(6) { left: 60%; animation-delay: 2.5s; }
+.confetti-piece:nth-child(7) { left: 70%; animation-delay: 3s; }
+.confetti-piece:nth-child(8) { left: 80%; animation-delay: 3.5s; }
+.confetti-piece:nth-child(9) { left: 90%; animation-delay: 4s; }
+
+/* Heart styles */
+.heart {
+    position: absolute;
+    font-size: 30px;
+    color: #ff4081;
+    animation: float 4s infinite;
+    pointer-events: none; /* Prevent interaction with hearts */
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
